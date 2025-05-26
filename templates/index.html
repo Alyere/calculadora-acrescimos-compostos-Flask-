@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Acréscimos Compostos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css ') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Acréscimos Compostos</h1>
+        <p>Calcule acréscimos de 27% e 30% sobre um valor base.</p>
+
+        <form method="post">
+            <label for="valor_base">Digite o valor base:</label>
+            <input type="number" id="valor_base" name="valor_base" step="0.01" min="0" required>
+            <button type="submit">Calcular</button>
+        </form>
+
+        {% if resultados %}
+            {% if resultados.error %}
+                <p class="error">{{ resultados.error }}</p>
+            {% else %}
+                <div class="results">
+                    <h2>Resultados:</h2>
+                    <p><strong>Valor Base:</strong> {{ resultados['valor_base'] }}</p>
+                    <p><strong>+ 27%:</strong> {{ resultados['acrescimo_27'] }}</p>
+                    <p><strong>Valor após 27%:</strong> {{ resultados['valor_apos_27'] }}</p>
+                    <hr>
+                    <p><strong>+ 30%:</strong> {{ resultados['acrescimo_30'] }}</p>
+                    <p><strong>Valor após 30% (Valor Final):</strong> {{ resultados['valor_apos_30'] }}</p>
+                    <hr>
+                    <p><strong>Total de Acréscimos:</strong> {{ resultados['total_acrescimos'] }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
