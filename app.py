@@ -42,5 +42,3 @@ def index():
             resultados = {"error": "Por favor, digite um valor numérico válido."}
     return render_template('index.html', resultados=resultados)
 
-if __name__ == '__main__':
-    app.run
